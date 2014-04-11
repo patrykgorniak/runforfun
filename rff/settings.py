@@ -27,6 +27,10 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+TEMPLATE_DIRS = (
+    BASE_DIR + "/rff/templates/",
+)
+
 # Application definition
 
 INSTALLED_APPS = (
