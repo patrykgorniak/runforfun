@@ -39,17 +39,38 @@
         <widget class="QComboBox" name="cbActions"/>
        </item>
        <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Login:</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tbLogin"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Haslo:</string>
          </property>
-        </spacer>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tbPass">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="cbCredentials">
+         <property name="layoutDirection">
+          <enum>Qt::RightToLeft</enum>
+         </property>
+         <property name="text">
+          <string>Use credentials:</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -63,7 +84,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="tbAddParams"/>
+        <widget class="QLineEdit" name="tbCookie"/>
        </item>
       </layout>
      </item>

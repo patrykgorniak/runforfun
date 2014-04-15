@@ -17,7 +17,7 @@ def request(url, method, body):
     if 'service' not in body:
         body = {'service': 'datasport', 'action': 'get_events'}
     resp,content = fHttp.request(URL+urlencode(body),method)
-    return content.decode()
+    return content
 
 
 
@@ -35,19 +35,32 @@ class MainWindow(QWidget, Ui_Form):
     def bSendClicked(self):
         args = {'service': self.cbServices.currentText(), 'action': self.cbActions.currentText() }
         self.tbResults.clear()
-        self.tbResults.setPlainText(request(URL, METHOD, args))
+        if self.cbCredentials.isChecked():
+            if self.tbCookie.text()!="":
+                args['cookie'] = self.tbCookie.text()
+            else:
+                args['login'] = self.tbLogin.text()
+                args['haslo'] = self.tbPass.text()
+        resp = request(URL, METHOD, args)
+        if resp.startswith('user'):
+            self.tbCookie.setText(resp.split(';')[0])
+        self.tbResults.setPlainText(resp)
 
     def bSaveClicked(self):
         text = self.tbResults.toPlainText()
         if text != "":
             if text.startswith('user'):
-                self.tbAddParams.setText(text.split(';')[0])
+                text = text.replace('user=','')
+                self.tbCookie.setText(text.split(';')[0])
 
 
     def initialize(self):
         self.cbServices.addItem("datasport")
         self.cbActions.addItem("get_events")
         self.cbActions.addItem("login")
+        self.cbActions.addItem("myaccount")
+        self.tbLogin.setText("Patryk.Gorniak")
+        self.tbPass.setText("dupa1234")
 
 
 
