@@ -17,7 +17,8 @@ def request(url, method, body):
     if 'service' not in body:
         body = {'service': 'datasport', 'action': 'get_events'}
     resp,content = fHttp.request(URL+urlencode(body),method)
-    return content
+    print(content)
+    return content.decode()
 
 
 
@@ -41,10 +42,13 @@ class MainWindow(QWidget, Ui_Form):
             else:
                 args['login'] = self.tbLogin.text()
                 args['haslo'] = self.tbPass.text()
-        resp = request(URL, METHOD, args)
-        if resp.startswith('user'):
-            self.tbCookie.setText(resp.split(';')[0])
-        self.tbResults.setPlainText(resp)
+        resp_ = request(URL, METHOD, args)
+        resp = json.loads(resp_)
+
+        if 'Cookie' in resp:
+            if resp['Cookie'].startswith('user'):
+                self.tbCookie.setText(resp['Cookie'].split(';')[0].split('=')[1])
+        self.tbResults.setPlainText(resp_)
 
     def bSaveClicked(self):
         text = self.tbResults.toPlainText()
