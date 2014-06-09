@@ -61,8 +61,8 @@ class MainWindow(QWidget, Ui_Form):
     def initialize(self):
         self.cbServices.addItem("datasport")
         self.cbActions.addItem("get_events")
-        self.cbActions.addItem("login")
         self.cbActions.addItem("myaccount")
+        self.cbActions.addItem("get_user_events")
         self.tbLogin.setText("Patryk.Gorniak")
         self.tbPass.setText("dupa1234")
 
