@@ -42,6 +42,9 @@ class MainWindow(QWidget, Ui_Form):
             else:
                 args['login'] = self.tbLogin.text()
                 args['haslo'] = self.tbPass.text()
+        else:
+             args[self.tbCookie.text().split('=')[0]] = self.tbCookie.text().split('=')[1]
+
         resp_ = request(URL, METHOD, args)
         resp = json.loads(resp_)
 
@@ -63,6 +66,7 @@ class MainWindow(QWidget, Ui_Form):
         self.cbActions.addItem("get_events")
         self.cbActions.addItem("myaccount")
         self.cbActions.addItem("get_user_events")
+        self.cbActions.addItem("get_user_history_results")
         self.tbLogin.setText("Patryk.Gorniak")
         self.tbPass.setText("dupa1234")
 
