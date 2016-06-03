@@ -1,0 +1,6 @@
+[submodule "parser"]
+	path = parser
+	url = https://github.com/patrykgorniak/runforfun-parser.git
+[submodule "client"]
+	path = client
+	url = https://github.com/patrykgorniak/runforfun-client.git
