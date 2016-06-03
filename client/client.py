@@ -43,7 +43,8 @@ class MainWindow(QWidget, Ui_Form):
                 args['login'] = self.tbLogin.text()
                 args['haslo'] = self.tbPass.text()
         else:
-             args[self.tbCookie.text().split('=')[0]] = self.tbCookie.text().split('=')[1]
+            if self.tbCookie.text() !="":
+                args[self.tbCookie.text().split('=')[0]] = self.tbCookie.text().split('=')[1]
 
         resp_ = request(URL, METHOD, args)
         resp = json.loads(resp_)
